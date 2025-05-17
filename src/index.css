@@ -1,0 +1,123 @@
+@tailwind  base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  @apply bg-dark-900 text-white font-[Inter,sans-serif] scroll-smooth;
+}
+
+.glass {
+  @apply bg-dark-800/30 backdrop-blur-md border border-white/5;
+}
+
+.glass-hero {
+  @apply bg-dark-800/20 backdrop-blur-xl border border-white/10;
+}
+
+.glass-darker {
+  @apply bg-dark-900/60 backdrop-blur-xl border border-white/5;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-accent-blue via-accent-purple to-accent-blue bg-clip-text text-transparent;
+}
+
+.gradient-text-alt {
+  @apply bg-gradient-to-r from-accent-blue to-accent-purple bg-clip-text text-transparent;
+}
+
+.gradient-text-animated {
+  @apply bg-gradient-to-r from-accent-blue via-accent-purple to-accent-blue bg-clip-text text-transparent bg-size-200 animate-gradient;
+}
+
+.gradient-bg {
+  @apply bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900;
+}
+
+.blue-glow {
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+.neon-border {
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+}
+
+.glow-on-hover:hover {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+.scroll-indicator {
+  @apply border-2 border-white/30 h-8 w-5 rounded-full relative after:absolute after:w-1 after:h-1 after:rounded-full after:bg-white after:left-1/2 after:-translate-x-1/2 after:top-2 after:animate-bounce after:duration-1000;
+}
+
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+.section-fade-in {
+  @apply opacity-0 transition-opacity duration-1000;
+}
+
+.section-fade-in.visible {
+  @apply opacity-100;
+}
+
+/* Animation for the floating effect */
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@layer utilities {
+  .bg-size-200 {
+    background-size: 200% 200%;
+  }
+
+  .animate-gradient {
+    animation: moveGradient 8s linear infinite;
+  }
+}
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Skill Bar Animation */
+.skill-bar {
+  @apply h-2 bg-dark-700 rounded-full overflow-hidden relative;
+}
+
+.skill-progress {
+  @apply h-full absolute top-0 left-0 rounded-full bg-gradient-to-r from-accent-blue to-accent-purple transform -translate-x-full transition-transform duration-1000;
+}
+
+.skill-progress.animate {
+  @apply translate-x-0;
+}
+
+/* Timeline styles */
+.timeline-container {
+  @apply relative pl-8 border-l border-accent-blue/30 space-y-12;
+}
+
+.timeline-dot {
+  @apply absolute -left-[7px] h-3.5 w-3.5 rounded-full bg-accent-blue ring-4 ring-dark-900;
+}
+
+.timeline-connector {
+  @apply absolute top-7 -left-[7px] bottom-0 w-0.5 bg-accent-blue/30;
+}
+
+/* CSS for the blurred glass effect */
+.blur-behind {
+  @apply relative;
+}
+
+.blur-behind::before {
+  content: "";
+  @apply absolute -inset-4 bg-dark-900/50 rounded-2xl -z-10 backdrop-blur-xl;
+}
+  
